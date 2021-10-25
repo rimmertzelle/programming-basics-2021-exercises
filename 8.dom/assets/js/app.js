@@ -1,3 +1,85 @@
+// EXERCISE 1. The DOM as a diagram. Is a model. So, no code here
+
+
+// EXERCISE 2. Selecting elements
+/* 1. Create a variable `pricingBox` and use the `querySelector()` method to assign
+ * the DOM element with id `pricing-box` to it. Log the variable to the console 
+ * to check if it is the correct element
+ */
+const pricingBox = document.querySelector('#pricing-box');
+
+console.log(pricingBox)
+
+/* 2. Do the same, but use `getElementById()` method instead. Name the variable 
+ * pricingBox2. Notice the difference between the parameters of both methods
+ */
+const pricingBox2 = document.getElementById('pricing-box');
+
+console.log(pricingBox2)
+
+/* 3. Use a method of your choice to find all the `<section>` elements and assign 
+ * them to a variable called `sections`
+ */
+const sections = document.getElementsByTagName('section');
+
+console.log(sections)
+
+/* 4. Use the `querySelector()` method to find the element with class `card-header` 
+ * who is a descendant (child) of the element with id `section-2`. Assign it to 
+ * a variable called `tempSectionHeader`
+ */
+const tempSectionHeader = document.querySelector('#section-2 .card-header')
+
+console.log(tempSectionHeader)
+
+/* 5. Use the `querySelectorAll()` method to find the elements with the `role`  
+ * attribute present. Assign the collection to a variable called `roleItems`
+ */ 
+const navItems = document.querySelectorAll('[role]')
+
+console.log(navItems)
+
+/* 6. Use the `querySelectorAll()` method to find all the child elements of the
+ * `<main>` element where the `data-description` attribute has the exact value 
+ * of `storage`. Assign the collection to a variable called `storageItems`
+ */ 
+const storageItems = document.querySelectorAll('main [data-description="storage"]')
+
+console.log(storageItems)
+
+// EXERCISE 3. Reading the content of elements
+/* 1. Log the innerHTML of the pricingBox variable from the previous exercise 
+ * to the console.
+ */
+console.log(pricingBox.innerHTML)
+
+/* 2. Log the textContent of the pricingBox variable from the previous exercise 
+ * to the console. Notice the difference between the two properties
+ */
+console.log(pricingBox.textContent)
+
+/* 3. Use a loop (or higher order function) to log the content as text of each 
+ * of the elements in storageItems
+ */
+Array.from(storageItems).forEach(value => {
+  console.log(value.textContent)
+})
+
+// EXERCISE 4. Updating content and styling
+const paragraph = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt \
+  iste magni veniam pariatur incidunt esse dolore molestiae impedit, id natus est modi \
+  eveniet maiores obcaecati optio dolores iure repellendus unde?";
+
+let parElement = document.querySelector('#pricing-box p') 
+parElement.textContent = paragraph;
+
+parElement.classList.add("text-muted")
+
+// EXERCISE 5. Removing
+const sect1 = document.querySelector('#section-1').closest('.col')
+sect1.remove()
+
+// EXERCISE 6. Creating tables
 window.addEventListener("load", init);
 
 function init() {
@@ -76,6 +158,7 @@ function voteForBooks() {
   domReference.append(tbody);
 }
 
+// EXERCISE 7. Calendar (EXPERT CHALLENGE)
 /**
  * Function to create a calender
  * Based on: https://javascript.info/modifying-document#create-a-calendar
